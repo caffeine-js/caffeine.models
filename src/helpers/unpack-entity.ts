@@ -1,4 +1,4 @@
-import type { Entity } from "@/models";
+import type { Entity } from "@/entity";
 import type { EntityDTO } from "../dtos/entity.dto";
 
 type UnpackEntityResponse<Output> = {

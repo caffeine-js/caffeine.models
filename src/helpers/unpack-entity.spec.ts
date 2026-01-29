@@ -1,4 +1,4 @@
-import { Entity } from "@/models";
+import { Entity } from "@/entity";
 import { unpackEntity } from "./unpack-entity";
 import { describe, expect, it } from "vitest";
 
