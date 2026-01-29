@@ -3,7 +3,7 @@ import { EntityDTO } from "@/dtos";
 import { Schema } from "./schema";
 import type { IEntity } from "./types";
 
-export abstract class Entity implements IEntity {
+export abstract class Entity<EntityOutputContent> implements IEntity {
 	public readonly id: string;
 	public readonly createdAt: string;
 	public updatedAt?: string;
@@ -22,4 +22,6 @@ export abstract class Entity implements IEntity {
 
 		return data;
 	}
+
+	public abstract unpack(): EntityOutputContent;
 }

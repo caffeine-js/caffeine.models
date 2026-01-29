@@ -5,14 +5,22 @@ import type { EntityDTO } from "@/dtos";
 import { InvalidEntityData } from "@caffeine/errors";
 import { makeEntityFactory } from "./factories";
 
-class TestEntity extends Entity {
+class TestEntity extends Entity<EntityDTO> {
 	public constructor(data: EntityDTO) {
 		super(data);
 	}
 
+	public unpack(): EntityDTO {
+		return {
+			id: this.id,
+			createdAt: this.createdAt,
+			updatedAt: this.updatedAt,
+		};
+	}
+
 	public static create(data?: EntityDTO): TestEntity {
 		const entityData = data ?? makeEntityFactory();
-		const preparedData = Entity.prepare(entityData);
+		const preparedData = TestEntity.prepare(entityData);
 		return new TestEntity(preparedData);
 	}
 }
