@@ -3,7 +3,9 @@ import { EntityDTO } from "@/dtos";
 import { Schema } from "./schema";
 import type { IEntity } from "./types";
 
-export abstract class Entity<EntityOutputContent> implements IEntity {
+export abstract class Entity<EntityOutputContent extends IEntity>
+	implements IEntity
+{
 	public readonly id: string;
 	public readonly createdAt: string;
 	public updatedAt?: string;
