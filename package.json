@@ -43,8 +43,8 @@
   },
   "dependencies": {
     "@caffeine/errors": "link:@caffeine/errors",
+    "@sinclair/typebox": "^0.34.48",
     "slugify": "^1.6.6",
-    "typebox": "^1.0.80",
     "uuid": "^13.0.0"
   },
   "scripts": {

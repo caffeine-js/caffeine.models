@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Type } from "typebox";
+import { Type } from "@sinclair/typebox";
 import { Schema } from "./schema";
 
 describe("Schema", () => {

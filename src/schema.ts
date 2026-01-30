@@ -1,11 +1,12 @@
-import type { TProperties, TSchema } from "typebox";
-import { Compile, type Validator } from "typebox/compile";
+import type { TSchema } from "@sinclair/typebox";
+import { TypeCompiler, type TypeCheck } from "@sinclair/typebox/compiler";
+import "./formats";
 
 export class Schema {
-	private compiledSchema: Validator<TProperties, TSchema, unknown, unknown>;
+	private compiledSchema: TypeCheck<TSchema>;
 
 	constructor(private schema: TSchema) {
-		this.compiledSchema = Compile(this.schema);
+		this.compiledSchema = TypeCompiler.Compile(this.schema);
 	}
 
 	static make(schema: TSchema): Schema {
