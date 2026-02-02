@@ -9,3 +9,12 @@ FormatRegistry.Set("uuid", (value) =>
 FormatRegistry.Set("date-time", (value) => {
 	return !Number.isNaN(Date.parse(value));
 });
+
+FormatRegistry.Set("url", (value) => {
+	try {
+		new URL(value);
+		return true;
+	} catch {
+		return false;
+	}
+});
