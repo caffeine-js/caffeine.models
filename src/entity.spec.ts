@@ -23,6 +23,10 @@ class TestEntity extends Entity<EntityDTO> {
 		const preparedData = TestEntity.prepare(entityData);
 		return new TestEntity(preparedData);
 	}
+
+	public touch(): void {
+		this.update();
+	}
 }
 
 describe("Entity", () => {
@@ -83,5 +87,49 @@ describe("Entity", () => {
 				updatedAt: "invalid-date",
 			});
 		}).toThrow(InvalidEntityData);
+	});
+	it("should unpack the entity to a DTO", () => {
+		const id = v7();
+		const createdAt = new Date().toISOString();
+		const updatedAt = new Date().toISOString();
+
+		const entity = TestEntity.create({ id, createdAt, updatedAt });
+		const unpacked = entity.unpack();
+
+		expect(unpacked).toEqual({
+			id,
+			createdAt: new Date(createdAt).toISOString(),
+			updatedAt: new Date(updatedAt).toISOString(),
+		});
+	});
+
+	it("should update the updatedAt field when update is called", async () => {
+		const entity = TestEntity.create();
+		expect(entity.updatedAt).toBeUndefined();
+
+		entity.touch();
+
+		expect(entity.updatedAt).toBeDefined();
+		expect(typeof entity.updatedAt).toBe("string");
+		expect(new Date(entity.updatedAt!).getTime()).not.toBeNaN();
+	});
+
+	it("should update the updatedAt field to a newer date", async () => {
+		const id = v7();
+		const oldDate = new Date("2020-01-01").toISOString();
+		const entity = TestEntity.create({
+			id,
+			createdAt: oldDate,
+			updatedAt: oldDate,
+		});
+
+		expect(entity.updatedAt).toBe(new Date(oldDate).toISOString());
+
+		await new Promise((resolve) => setTimeout(resolve, 10));
+		entity.touch();
+
+		expect(new Date(entity.updatedAt!).getTime()).toBeGreaterThan(
+			new Date(oldDate).getTime(),
+		);
 	});
 });

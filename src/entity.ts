@@ -25,5 +25,9 @@ export abstract class Entity<EntityOutputContent extends IEntity>
 		return data;
 	}
 
+	protected update(): void {
+		this.updatedAt = new Date().toISOString();
+	}
+
 	public abstract unpack(): EntityOutputContent;
 }
