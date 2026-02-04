@@ -1,6 +1,6 @@
 import { TypeCompiler } from "@sinclair/typebox/compiler";
 import { Schema } from "./schema";
-import { hydrateSchema } from "./utils/hydrate-schema";
+import { hydrateSchema } from "@/utils/hydrate-schema";
 
 export const SchemaManager = {
 	build(schema: string): Schema {

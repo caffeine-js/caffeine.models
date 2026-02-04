@@ -1,2 +1,3 @@
 export { AuthorizationDTO } from "./authorization.dto";
-export { NumericResponseDTO } from "./numeric-response.dto";
+export { PaginationDTO } from "./pagination.dto";
+export { ResponseDTO } from "./response.dto";
