@@ -3,9 +3,7 @@ import { EntityDTO } from "@/dtos";
 import { Schema } from "./schema";
 import type { IEntity } from "./types";
 
-export abstract class Entity<EntityOutputContent extends IEntity>
-	implements IEntity
-{
+export abstract class Entity implements IEntity {
 	public readonly id: string;
 	public readonly createdAt: string;
 	public updatedAt?: string;
@@ -28,6 +26,4 @@ export abstract class Entity<EntityOutputContent extends IEntity>
 	protected update(): void {
 		this.updatedAt = new Date().toISOString();
 	}
-
-	public abstract unpack(): EntityOutputContent;
 }

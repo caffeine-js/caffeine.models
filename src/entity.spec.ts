@@ -5,7 +5,7 @@ import type { EntityDTO } from "@/dtos";
 import { InvalidEntityData } from "@caffeine/errors";
 import { makeEntityFactory } from "./factories";
 
-class TestEntity extends Entity<EntityDTO> {
+class TestEntity extends Entity {
 	public constructor(data: EntityDTO) {
 		super(data);
 	}

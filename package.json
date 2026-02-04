@@ -50,7 +50,7 @@
   },
   "scripts": {
     "build": "tsup 'src/**/index.ts' --format cjs,esm --dts --tsconfig tsconfig.build.json --clean",
-    "test": "vitest run",
+    "test:unit": "vitest run",
     "test:coverage": "vitest run --coverage",
     "setup": "bun run build && bun link"
   }
