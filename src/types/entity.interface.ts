@@ -1,7 +1,5 @@
-export interface IEntity<OutputType = unknown> {
+export interface IEntity {
 	readonly id: string;
 	readonly createdAt: string;
 	readonly updatedAt?: string;
-
-	unpack(): OutputType;
 }
