@@ -21,8 +21,10 @@ export class Schema<SchemaType extends TSchema> {
 	}
 
 	public map(content: unknown): Static<SchemaType> {
-		console.log(Value.Cast(this.schema, Value.Convert(this.schema, content)));
-		return Value.Cast(this.schema, Value.Convert(this.schema, content));
+		return Value.Clean(
+			this.schema,
+			Value.Cast(this.schema, Value.Convert(this.schema, content)),
+		);
 	}
 
 	public toString(): string {

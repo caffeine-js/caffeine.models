@@ -47,4 +47,39 @@ describe("Schema", () => {
 		const validator = new Schema(schema);
 		expect(validator.toJSON()).toEqual(schema);
 	});
+	describe("map", () => {
+		it("should map valid data correctly", () => {
+			const validator = new Schema(schema);
+			const data = { name: "John", age: 30 };
+			const result = validator.map(data);
+			expect(result).toEqual(data);
+		});
+
+		it("should strip unknown properties", () => {
+			const validator = new Schema(schema);
+			const data = { name: "John", age: 30, extra: "field" };
+			const result = validator.map(data);
+			expect(result).toEqual({ name: "John", age: 30 });
+			// @ts-expect-error - testing runtime behavior
+			expect(result.extra).toBeUndefined();
+		});
+
+		it("should use default values", () => {
+			const schemaWithDefault = Type.Object({
+				name: Type.String(),
+				role: Type.String({ default: "user" }),
+			});
+			const validator = new Schema(schemaWithDefault);
+			const data = { name: "Jane" };
+			const result = validator.map(data);
+			expect(result).toEqual({ name: "Jane", role: "user" });
+		});
+
+		it("should convert compatible types", () => {
+			const validator = new Schema(schema);
+			const data = { name: "John", age: "30" }; // "30" string should convert to 30 number
+			const result = validator.map(data);
+			expect(result).toEqual({ name: "John", age: 30 });
+		});
+	});
 });

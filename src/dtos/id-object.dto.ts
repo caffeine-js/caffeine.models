@@ -8,7 +8,6 @@ export const IdObjectDTO = Type.Object(
 	{
 		description: "Query parameters for retrieving a resource by its UUID.",
 		examples: [{ uuid: "550e8400-e29b-41d4-a716-446655440000" }],
-		additionalProperties: false,
 	},
 );
 

@@ -1,9 +1,10 @@
 import { TypeCompiler } from "@sinclair/typebox/compiler";
 import { Schema } from "./schema";
 import { hydrateSchema } from "@/utils/hydrate-schema";
+import type { TSchema } from "@sinclair/typebox";
 
 export const SchemaManager = {
-	build(schema: string): Schema {
+	build<SchemaType extends TSchema>(schema: string): Schema<SchemaType> {
 		const parsedSchema = JSON.parse(schema);
 		const hydrated = hydrateSchema(parsedSchema);
 
