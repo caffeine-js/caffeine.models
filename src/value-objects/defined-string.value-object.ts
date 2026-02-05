@@ -4,7 +4,7 @@ import type { IValueObjectMetadata } from "@/types/value-object-metadata.interfa
 import { InvalidPropertyException } from "@caffeine/errors/domain";
 
 export class DefinedStringVO {
-	private constructor(public readonly value: string) {}
+	protected constructor(public readonly value: string) {}
 
 	public static make(data: IValueObjectMetadata<string>): DefinedStringVO {
 		if (!Schema.make(StringDTO).match(data.value))
