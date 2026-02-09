@@ -1,9 +1,9 @@
 import { InvalidPropertyException } from "@caffeine/errors/domain";
-import { StringDTO } from "@caffeine/models/dtos/primitives";
-import { slugify } from "@caffeine/models/helpers";
-import { Schema } from "@caffeine/models/schema";
-import type { IValueObjectMetadata } from "@caffeine/models/types";
-import { DefinedStringVO } from "@caffeine/models/value-objects";
+import { DefinedStringVO } from "./defined-string.value-object";
+import type { IValueObjectMetadata } from "@/types";
+import slugify from "slugify";
+import { Schema } from "@/schema";
+import { StringDTO } from "@/dtos/primitives";
 
 export class SlugVO extends DefinedStringVO {
 	private constructor(value: string) {
