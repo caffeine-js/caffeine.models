@@ -6,6 +6,7 @@
       "name": "caffeine-models",
       "dependencies": {
         "@caffeine/errors": "link:@caffeine/errors",
+        "@caffeine/schema": "link:@caffeine/schema",
         "@sinclair/typebox": "^0.34.48",
         "slugify": "^1.6.6",
         "uuid": "^13.0.0",
@@ -18,6 +19,7 @@
         "vitest": "^4.0.18",
       },
       "peerDependencies": {
+        "@sinclair/typebox": "^0.34.48",
         "typescript": "^5",
       },
     },
@@ -34,6 +36,8 @@
     "@bcoe/v8-coverage": ["@bcoe/v8-coverage@1.0.2", "", {}, "sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA=="],
 
     "@caffeine/errors": ["@caffeine/errors@link:@caffeine/errors", {}],
+
+    "@caffeine/schema": ["@caffeine/schema@link:@caffeine/schema", {}],
 
     "@esbuild/aix-ppc64": ["@esbuild/aix-ppc64@0.27.2", "", { "os": "aix", "cpu": "ppc64" }, "sha512-GZMB+a0mOMZs4MpDbj8RJp4cw+w1WV5NYD6xzgvzUJ5Ek2jerwfO2eADyI6ExDSUED+1X8aMbegahsJi+8mgpw=="],
 

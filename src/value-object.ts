@@ -1,7 +1,7 @@
 import type { TSchema } from "@sinclair/typebox";
-import type { Schema } from "./schema";
 import type { IValueObjectMetadata } from "./types";
 import { InvalidPropertyException } from "@caffeine/errors/domain";
+import type { Schema } from "@caffeine/schema";
 
 export abstract class ValueObject<ValueType, SchemaType extends TSchema> {
 	protected abstract readonly schema: Schema<SchemaType>;
