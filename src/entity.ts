@@ -1,7 +1,7 @@
 import { InvalidEntityData } from "@caffeine/errors";
-import { EntityDTO } from "@/dtos";
-import { Schema } from "./schema";
+import type { EntityDTO } from "@/dtos";
 import type { IEntity } from "./types";
+import { EntitySchema } from "./schemas";
 
 export abstract class Entity implements IEntity {
 	public readonly id: string;
@@ -15,7 +15,7 @@ export abstract class Entity implements IEntity {
 	}
 
 	protected static prepare(data: EntityDTO): EntityDTO {
-		const isAValidEntity = new Schema(EntityDTO).match(data);
+		const isAValidEntity = EntitySchema.match(data);
 
 		if (!isAValidEntity)
 			throw new InvalidEntityData("Cannot build the target entity.");
