@@ -1,4 +1,4 @@
-import { Kind, Hint, OptionalKind, ReadonlyKind } from "@sinclair/typebox/type";
+import { Kind } from "@sinclair/typebox/type";
 
 export function hydrateSchema(schema: any): any {
 	if (typeof schema !== "object" || schema === null) return schema;

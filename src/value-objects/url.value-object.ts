@@ -1,15 +1,16 @@
-import { UrlDTO } from "@/dtos/primitives";
-import { Schema } from "@/schema";
+import type { UrlDTO } from "@/dtos/primitives";
+import { UrlSchema } from "@/schemas/primitives";
 import type { IValueObjectMetadata } from "@/types/value-object-metadata.interface";
-import { InvalidPropertyException } from "@caffeine/errors/domain";
+import { ValueObject } from "@/value-object";
 
-export class UrlVO {
-	protected constructor(public readonly value: string) {}
+export class UrlVO extends ValueObject<string, typeof UrlDTO> {
+	protected override schema = UrlSchema;
 
-	public static make(data: IValueObjectMetadata<string>): UrlVO {
-		if (!Schema.make(UrlDTO).match(data.value))
-			throw new InvalidPropertyException(data.name, data.layer);
+	public static make(value: string, info: IValueObjectMetadata): UrlVO {
+		const newVO = new UrlVO(value, info);
 
-		return new UrlVO(data.value);
+		newVO.validate();
+
+		return newVO;
 	}
 }

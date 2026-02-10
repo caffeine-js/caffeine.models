@@ -1,21 +1,17 @@
-import { InvalidPropertyException } from "@caffeine/errors/domain";
+import { slugify } from "@/helpers";
 import { DefinedStringVO } from "./defined-string.value-object";
-import type { IValueObjectMetadata } from "@/types";
-import slugify from "slugify";
-import { Schema } from "@/schema";
-import { StringDTO } from "@/dtos/primitives";
+import type { IValueObjectMetadata } from "@/types/value-object-metadata.interface";
 
 export class SlugVO extends DefinedStringVO {
-	private constructor(value: string) {
-		super(value);
-	}
+	public static override make(
+		value: string,
+		info: IValueObjectMetadata,
+	): SlugVO {
+		const slugged = slugify(value);
+		const newVO = new SlugVO(slugged, info);
 
-	public static override make(data: IValueObjectMetadata<string>): SlugVO {
-		const value = slugify(data.value);
+		newVO.validate();
 
-		if (!Schema.make(StringDTO).match(value))
-			throw new InvalidPropertyException(data.name, data.layer);
-
-		return new SlugVO(value);
+		return newVO;
 	}
 }

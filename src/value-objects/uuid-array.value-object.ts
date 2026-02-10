@@ -1,15 +1,16 @@
-import { UuidArrayDTO } from "@/dtos/primitives";
-import { Schema } from "@/schema";
+import type { UuidArrayDTO } from "@/dtos/primitives";
+import { UuidArraySchema } from "@/schemas/primitives";
 import type { IValueObjectMetadata } from "@/types/value-object-metadata.interface";
-import { InvalidPropertyException } from "@caffeine/errors/domain";
+import { ValueObject } from "@/value-object";
 
-export class UuidArrayVO {
-	protected constructor(public readonly value: string[]) {}
+export class UuidArrayVO extends ValueObject<string[], typeof UuidArrayDTO> {
+	protected override schema = UuidArraySchema;
 
-	public static make(data: IValueObjectMetadata<string[]>): UuidArrayVO {
-		if (!Schema.make(UuidArrayDTO).match(data.value))
-			throw new InvalidPropertyException(data.name, data.layer);
+	public static make(value: string[], info: IValueObjectMetadata): UuidArrayVO {
+		const newVO = new UuidArrayVO(value, info);
 
-		return new UuidArrayVO(data.value);
+		newVO.validate();
+
+		return newVO;
 	}
 }

@@ -4,8 +4,7 @@ import { InvalidPropertyException } from "@caffeine/errors/domain";
 
 describe("SlugVO", () => {
 	it("should create a valid slug from a string", () => {
-		const slug = SlugVO.make({
-			value: "My Title",
+		const slug = SlugVO.make("My Title", {
 			name: "slug",
 			layer: "domain",
 		});
@@ -13,8 +12,7 @@ describe("SlugVO", () => {
 	});
 
 	it("should keep an already valid slug", () => {
-		const slug = SlugVO.make({
-			value: "my-title",
+		const slug = SlugVO.make("my-title", {
 			name: "slug",
 			layer: "domain",
 		});
@@ -22,8 +20,8 @@ describe("SlugVO", () => {
 	});
 
 	it("should throw InvalidPropertyException for invalid value", () => {
-		expect(() =>
-			SlugVO.make({ value: "", name: "slug", layer: "domain" }),
-		).toThrow(InvalidPropertyException);
+		expect(() => SlugVO.make("", { name: "slug", layer: "domain" })).toThrow(
+			InvalidPropertyException,
+		);
 	});
 });

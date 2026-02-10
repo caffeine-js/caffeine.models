@@ -1,15 +1,19 @@
-import { StringDTO } from "@/dtos/primitives";
-import { Schema } from "@/schema";
+import type { StringDTO } from "@/dtos/primitives";
+import { StringSchema } from "@/schemas/primitives";
 import type { IValueObjectMetadata } from "@/types/value-object-metadata.interface";
-import { InvalidPropertyException } from "@caffeine/errors/domain";
+import { ValueObject } from "@/value-object";
 
-export class DefinedStringVO {
-	protected constructor(public readonly value: string) {}
+export class DefinedStringVO extends ValueObject<string, typeof StringDTO> {
+	protected override schema = StringSchema;
 
-	public static make(data: IValueObjectMetadata<string>): DefinedStringVO {
-		if (!Schema.make(StringDTO).match(data.value))
-			throw new InvalidPropertyException(data.name, data.layer);
+	public static make(
+		value: string,
+		info: IValueObjectMetadata,
+	): DefinedStringVO {
+		const newVO = new DefinedStringVO(value, info);
 
-		return new DefinedStringVO(data.value);
+		newVO.validate();
+
+		return newVO;
 	}
 }
