@@ -5,3 +5,4 @@ export * from "./string.schema";
 export * from "./url.schema";
 export * from "./uuid-array.schema";
 export * from "./uuid.schema";
+export * from "./slug.schema";
