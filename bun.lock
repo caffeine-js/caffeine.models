@@ -5,6 +5,7 @@
     "": {
       "name": "@caffeine/models",
       "dependencies": {
+        "@caffeine/models": ".",
         "@caffeine/errors": "link:@caffeine/errors",
         "@caffeine/schema": "link:@caffeine/schema",
         "@sinclair/typebox": "^0.34.48",
@@ -35,6 +36,8 @@
     "@bcoe/v8-coverage": ["@bcoe/v8-coverage@1.0.2", "", {}, "sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA=="],
 
     "@caffeine/errors": ["@caffeine/errors@link:@caffeine/errors", {}],
+
+    "@caffeine/models": ["@caffeine/models@root:", {}],
 
     "@caffeine/schema": ["@caffeine/schema@link:@caffeine/schema", {}],
 

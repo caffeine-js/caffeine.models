@@ -1,12 +1,9 @@
 import { Type, type Static } from "@sinclair/typebox";
+import { SlugDTO } from "./primitives/slug.dto";
 
 export const SlugObjectDTO = Type.Object(
 	{
-		slug: Type.String({
-			description: "The unique slug identifier of the resource to query.",
-			examples: ["my-cool-post"],
-			format: "slug",
-		}),
+		slug: SlugDTO,
 	},
 	{
 		description: "Query parameters for retrieving a resource by its slug.",
