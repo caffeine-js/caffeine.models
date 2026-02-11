@@ -5,6 +5,7 @@ export const SlugObjectDTO = Type.Object(
 		slug: Type.String({
 			description: "The unique slug identifier of the resource to query.",
 			examples: ["my-cool-post"],
+			format: "slug",
 		}),
 	},
 	{
