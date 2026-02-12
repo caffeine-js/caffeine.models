@@ -6,3 +6,4 @@ export * from "./url.dto";
 export * from "./uuid.dto";
 export * from "./uuid-array.dto";
 export * from "./slug.dto";
+export * from "./date-time.dto";

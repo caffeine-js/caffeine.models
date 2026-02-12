@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { PasswordDTO } from "./password.dto";
-import { Schema } from "@/schema";
+import { Schema } from "@caffeine/schema";
 
 describe("PasswordDTO", () => {
 	const validator = new Schema(PasswordDTO);
